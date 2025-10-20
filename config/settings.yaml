@@ -1,0 +1,15 @@
+repo_type: github
+base_branch: main
+approvers:
+  - approver1@example.com
+  - approver2@example.com
+release_prefix: release/fastlane_
+date_format: "%Y-%m-%d"
+github:
+  api_url: https://api.github.com
+  owner: your-github-username
+  repo: your-repo-name
+bitbucket:
+  api_url: https://api.bitbucket.org/2.0
+  workspace: your-bitbucket-workspace
+  repo_slug: your-repo-slug

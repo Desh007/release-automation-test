@@ -1,0 +1,28 @@
+name: Create Release Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_date:
+        description: "Enter target release date (YYYY-MM-DD)"
+        required: true
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Install Dependencies
+        run: pip install requests pyyaml
+
+      - name: Run Branch Creator
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/create_release_branch.py "${{ github.event.inputs.release_date }}"
